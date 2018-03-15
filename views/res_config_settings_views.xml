@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_for_algolia" model="ir.ui.view">
+        <field name="name">website.config.settings.view.form.inherit.algolia.ecommerce</field>
+        <field name="model">website.config.settings</field>
+        <field name="inherit_id" ref="website.view_website_config_settings"/>
+        <field name="arch" type="xml">
+            <group name="social" position="after">
+                <group name="algolia_ecommerce" string="Agolia Integration">
+
+
+                    <label for="application_id"/>
+                    <div name="application_id">
+                        <div class="oe_inline">
+                            <field name="application_id" placeholder="Enter here your Application ID"/>
+                        </div>
+                    </div>
+                    <label for="search_key"/>
+                    <div name="search_key">
+                        <div class="oe_inline">
+                            <field name="search_key" placeholder="Enter here your Search Only API Key"/>
+                        </div>
+                    </div>
+                    <label for="admin_key"/>
+                    <div name="admin_key">
+                        <div class="oe_inline">
+                            <field name="admin_key" placeholder="Enter here your Admin API Key"/>
+                        </div>
+                    </div>
+                    <label for="menitor_key"/>
+                    <div name="menitor_key">
+                        <div class="oe_inline">
+                            <field name="menitor_key" placeholder="Enter here your Monitoring API Key"/>
+                        </div>
+                    </div>
+                </group>
+            </group>
+        </field>
+    </record>
+</odoo>

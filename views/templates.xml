@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+        <template id="website.website_search_box">
+            <xpath expr="input[name='search']" position="replace">
+                <input type="text" name="search" class="search-query form-control oe_search_box js_website_autocomplete"
+                       placeholder="Search..." t-att-value="search"
+                       data-query-field="name"
+                       data-display-field="name"
+                       data-limit="10"
+                       data-model="product.product"
+                       data-value-field="name"
+                />
+            </xpath>
+        </template>
+    </data>
+</odoo>
