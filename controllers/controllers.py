@@ -11,6 +11,7 @@ from odoo.http import request
 
 class Website(Website):
 
+    # overriding the methods used by website_field_autocomplete
     @http.route(
         '/website/field_autocomplete/<string:model>',
         type='http',
@@ -19,8 +20,6 @@ class Website(Website):
         website=True,
     )
     def _get_field_autocomplete(self, model, **kwargs):
-        # print('_get_field_autocomplete')
-        # print(model)
         """ Return json autocomplete data """
         domain = json.loads(kwargs.get('domain', "[]"))
         fields = json.loads(kwargs.get('fields', "[]"))
@@ -29,8 +28,7 @@ class Website(Website):
         return json.dumps(res.values())
 
     def _get_autocomplete_data(self, model, domain, fields, limit=None):
-        # print('_get_autocomplete_data')
-        # print(model,'  ',domain,'  ',fields,'  ',limit)
+        #
         """ Gets and returns raw record data
         Params:
             model: Model name to query on
@@ -42,6 +40,7 @@ class Website(Website):
         """
         # if model is product we will search our database and algolia index and compine the results
         if (model == 'product.product'):
+
             params = request.env['ir.config_parameter'].sudo()
             application_id = params.get_param('algolia_ecommerce.application_id', default='')
             admin_key = params.get_param('algolia_ecommerce.admin_key', default='')
@@ -51,7 +50,6 @@ class Website(Website):
             ids = []
             # get the data from algolia
             algolia = index.search(domain[-1][-1])
-            # print(algolia)
             for a in algolia['hits']:
                 ids.append(int(a['objectID']))
             if limit:
@@ -59,18 +57,13 @@ class Website(Website):
             res = request.env[model].search_read(
                 domain, fields, limit=limit
             )
-            # print('res', res)
             for r in res:
                 if r['id'] in ids:
                     ids.remove(r['id'])
-            # print(ids)
             if len(ids) > 0:
                 res2 = request.env[model].search_read([('id', 'in', ids)], fields, limit=limit)
-                # print('res2', res2)
                 res = res + res2
-            # print(res)
             oo = {r['id']: r for r in res}
-            # print('oo ',oo)
             return oo
         else:
             if limit:

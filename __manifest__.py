@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "algolia_ecommerce",
+    'name': "Algolia E-commerce Integration",
 
     'summary': """
         This module aim to add full test search support to the E-commerce""",
@@ -10,7 +10,7 @@
     """,
 
     'author': 'Eng Mohamed Rabiea',
-    'website': "http://www.yourcompany.com",
+    'website': "https://www.linkedin.com/in/mohamed-rabia-b9a12a40/",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
