@@ -59,8 +59,8 @@ class ProductProduct(models.Model):
 
         client = algoliasearch.Client(application_id, admin_key)
         index = client.init_index('products')
-        if (len(application_id) == 0 or len(admin_key) == 0):
-            raise odoo.exceptions.Warning('Currently, yor Algolia configurations is not set,please configure it.')
+        # if (len(application_id) == 0 or len(admin_key) == 0):
+        #     raise odoo.exceptions.Warning('Currently, yor Algolia configurations is not set,please configure it.')
 
         # TODO add try catch algolia exceptions
         res_al = index.add_object(
@@ -79,14 +79,13 @@ class ProductProduct(models.Model):
 
         client = algoliasearch.Client(application_id, admin_key)
         index = client.init_index('products')
-        # print('asd', application_id,len(application_id))
-        if (len(application_id) == 0 or len(admin_key) == 0):
-            print('why')
-            raise odoo.exceptions.Warning('Currently, yor Algolia configurations is not set,please configure it.')
-
-            return {'warning': {'title': 'Algoria Integration error',
-                                'message': 'kindly provide your algoria search application ID and admin '
-                                           'API key to push created products to the index'}}
+        # if (len(application_id) == 0 or len(admin_key) == 0):
+        #     print('why')
+        #     raise odoo.exceptions.Warning('Currently, yor Algolia configurations is not set,please configure it.')
+        #
+        #     return {'warning': {'title': 'Algoria Integration error',
+        #                         'message': 'kindly provide your algoria search application ID and admin '
+        #                                    'API key to push created products to the index'}}
 
         # TODO add try catch algolia exceptions
         index.save_object(
