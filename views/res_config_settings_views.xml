@@ -6,9 +6,8 @@
         <field name="inherit_id" ref="website.view_website_config_settings"/>
         <field name="arch" type="xml">
             <group name="social" position="after">
+                <!--Algolia configuration-->
                 <group name="algolia_ecommerce" string="Agolia Integration">
-
-
                     <label for="application_id"/>
                     <div name="application_id">
                         <div class="oe_inline">
@@ -33,6 +32,13 @@
                             <field name="menitor_key" placeholder="Enter here your Monitoring API Key"/>
                         </div>
                     </div>
+                    <label string=""/>
+                    <div name="export_button">
+                        <button name="export_all_products" string="Export All Products" type="object"
+                                class="oe_highlight"/>
+                    </div>
+
+
                 </group>
             </group>
         </field>
