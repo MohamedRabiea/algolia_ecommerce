@@ -6,7 +6,10 @@
         This module aim to add full test search support to the E-commerce""",
 
     'description': """
-        Long description of module's purpose
+        kindly run this command before installing the module.
+		
+		pip install algoliasearch
+
     """,
 
     'author': 'Eng Mohamed Rabiea',
@@ -28,6 +31,9 @@
         'views/res_config_settings_views.xml',
         'views/templates.xml',
     ],
+	'external_dependencies': { # python pip packages
+         'python': [ 'algoliasearch'],
+    },
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
